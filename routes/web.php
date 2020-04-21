@@ -1,5 +1,6 @@
 <?php
 
+use App\User;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,7 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view('/', 'welcome');
+Route::get('/', function() {
+    $users = User::orderBy('created_at', 'DESC')->get();
+
+    return view('welcome', compact('users'));
+});
 
 Route::prefix('admin')->group(function () {
     Route::namespace('Auth')->group(function () {

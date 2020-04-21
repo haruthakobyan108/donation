@@ -17,7 +17,9 @@
       <!-- Masthead-->
       <header class="masthead">
           <div class="container">
-              <div class="masthead-heading text-uppercase text-left">151</div>
+              <div class="masthead-heading text-uppercase text-left">
+                {{ $users->count() }}
+              </div>
           </div>
       </header>
       <!-- Services-->
@@ -25,11 +27,9 @@
           <div class="container">
               <div class="row text-center text-white">
                   <div class="col-md-4">
-                      <h4 class="my-3">Արշակ Անտաոնյան</h4>
-                      <h4 class="my-3">Արշակ Անտաոնյան</h4>
-                      <h4 class="my-3">Արշակ Անտաոնյան</h4>
-                      <h4 class="my-3">Արշակ Անտաոնյան</h4>
-                      <h4 class="my-3">Արշակ Անտաոնյան</h4>
+                      @foreach ($users as $item)
+                        <h4 class="my-3">{{ $item->name }}</h4>
+                      @endforeach
                   </div>
                   <div class="col-md-6 offset-md-2">
                      <div class="col-md-2"> <h4> Միշտ՝ </h4></div>
@@ -38,8 +38,8 @@
                               Ամեն տարի ապրիլի 24-ին` Մեծ Եղեռնի զոհերի հիշատակի օրը, հարյուր հազարավոր մարդիկ այցելում են Ծիծեռնակաբերդի հուշահամալիր և ծաղիկներ խոնարհում անմար կրակի շուրջը:
                           </p>
                      </div>
-                     <div class="col-md-2"> <h4>  Այս տարի՝ </h4></div>
-                     <div class="col-md-10">
+                     <div class="col-md-12">
+                       <h4 class="text-left">Այս տարի՝ </h4>
                           <p class="text-left">
                               2020-ի գարունը տարբերվում է բոլոր գարուններից:
                               Երկրում հայտարարված  արտակարգ դրության պատճառով այս տարվա երթը դեպի Ծիծեռնակաբերդ չի կայանա:
@@ -68,11 +68,14 @@
                               Հ.Գ. Ցանկության դեպքում կարող եք օգնել նախաձեռնությանը` նվիրաբերելով գումար ծաղիկների համար (գումարի չափը կարևոր չէ):
                           </p>
                      </div>
-                      <button type="button" class="btn btn-light btn-lg float-left px-5 font-weight-bold">Donate</button>
+                      <div class="col-md-12">
+                        <a fref="#" class="btn btn-success btn-lg float-left px-5 font-weight-bold">
+                          Աջակցել
+                        </a>
+                      </div>
                   </div>
               </div>
           </div>
       </section>
-      <script src="/js/scripts.js"></script>
   </body>
 </html>
