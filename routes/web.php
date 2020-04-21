@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::view('/', 'welcome');
+
 Route::prefix('admin')->group(function () {
     Route::namespace('Auth')->group(function () {
         Route::get('login', 'AdminLoginController@showLoginForm')->name('admin.login');
