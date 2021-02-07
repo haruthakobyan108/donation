@@ -17,7 +17,12 @@ jobs:
       # - image: circleci/mysql:5.7-ram
       #
       # - image: redis:2.8.19
-
+      - image: circleci/mysql:5.7.18
+        environment:
+            MYSQL_DATABASE: homestead_test
+            MYSQL_USER: homestead_test
+            MYSQL_PASSWORD: secret
+            MYSQL_ROOT_PASSWORD: root
     steps:
       - checkout
 
@@ -49,8 +54,7 @@ jobs:
             - node_modules
 
       # prepare the database
-      - run: touch storage/.env.testing
-      - run: php artisan migrate --env=testing --database=sqlite_testing --force
+      - run: php artisan migrate --database=mysql_test
 
       # run tests with phpunit or codecept
       #- run: ./vendor/bin/phpunit
